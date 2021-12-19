@@ -61,7 +61,7 @@ plugin-adding command is `Plugin`.
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
 Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
+Plugin 'TruncatedDinosour/vim-codefmt'
 " Also add Glaive, which is used to configure codefmt's maktaba flags. See
 " `:help :Glaive` for usage.
 Plugin 'google/vim-glaive'
@@ -147,9 +147,6 @@ here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
     " The path to the buildifier executable.
     call s:plugin.Flag('myformatter_executable', 'myformatter')
     ```
-
-*   Create a [vroom](https://github.com/google/vroom) test named
-    `vroom/myformatter.vroom` to ensure your formatter works properly.
 
 *   Update the README.md to mention your new filetype!
 
