@@ -123,7 +123,7 @@ call s:plugin.Flag('ktfmt_executable', ['ktfmt'])
 " takes no args and returns a list with command line arguments. By default, uses
 " the Google's style.
 " See https://github.com/mvdan/sh for details.
-call s:plugin.Flag('shfmt_options', ['-i', '2', '-sr', '-ci'])
+call s:plugin.Flag('shfmt_options', ['-i', '4', '-s'])
 
 ""
 " The path to the shfmt executable. String, list, or callable that
