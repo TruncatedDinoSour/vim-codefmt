@@ -4,10 +4,6 @@ codefmt is a utility for syntax-aware code formatting.  It contains several
 built-in formatters, and allows new formatters to be registered by other
 plugins.
 
-For details, see the executable documentation in the `vroom/` directory or the
-helpfiles in the `doc/` directory. The helpfiles are also available via
-`:help codefmt` if codefmt is installed (and helptags have been generated).
-
 # Supported File-types
 
 * [Bazel](https://www.github.com/bazelbuild/bazel) BUILD files (buildifier)
