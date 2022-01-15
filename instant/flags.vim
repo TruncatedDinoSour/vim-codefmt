@@ -190,6 +190,17 @@ call s:plugin.Flag('zprint_executable', 'zprint')
 call s:plugin.Flag('fish_indent_executable', 'fish_indent')
 
 ""
+" The path to the hindent executable.
+call s:plugin.Flag('hindent_executable', 'hindent')
+call s:plugin.Flag('hindent_indent_size', '2')
+call s:plugin.Flag('hindent_line_length', '80')
+
+" The path to the brittany executable.
+call s:plugin.Flag('brittany_executable', 'brittany')
+call s:plugin.Flag('brittany_indent', '2')
+call s:plugin.Flag('brittany_columns', '80')
+
+""
 " The path to the nixpkgs-fmt executable.
 call s:plugin.Flag('nixpkgs_fmt_executable', 'nixpkgs-fmt')
 
