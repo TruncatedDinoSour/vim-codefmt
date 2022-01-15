@@ -5,92 +5,117 @@ plugins.
 # Supported file types
 
 -   [Python](https://www.python.org/)
-    -   [AutoPEP8](https://github.com/hhatto/autopep8)
-    -   [Black](https://github.com/psf/black)
-    -   [Isort](https://github.com/PyCQA/isort)
-    -   [YAPH](https://github.com/google/yapf)
+    -   [AutoPEP8][]
+    -   [Black][]
+    -   [Isort][]
+    -   [YAPH][]
 -   [Haskell](https://www.haskell.org/)
-    -   [Brittany](https://github.com/lspitzner/brittany)
-    -   [Hindent](https://github.com/mihaimaruseac/hindent)
+    -   [Brittany][]
+    -   [Hindent][]
 -   [Bazel](https://docs.bazel.build/versions/main/user-manual.html)
-    -   [Buildifier](https://github.com/bazelbuild/buildifier)
+    -   [Buildifier][]
 -   [C](https:////en.wikipedia.org/wiki/C_%28programming_language%29)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
 -   [C++](https://en.wikipedia.org/wiki/C%2B%2B)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
 -   [Java](https://www.java.com/)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
     -   [Google-java-format](https://github.com/google/google-java-format)
 -   [JavaScript](https://www.javascript.com/)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Clang-format][]
+    -   [JS-beautify][]
+    -   [Prettier][]
 -   [JSON](https://en.wikipedia.org/wiki/JSON)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Clang-format][]
+    -   [Prettier][]
 -   [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
 -   [Protobuf](https://github.com/protocolbuffers/protobuf)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
 -   [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
 -   [Clojure](https://clojure.org/)
-    -   [Cljstyle](https://github.com/greglook/cljstyle)
-    -   [ZPrint](https://github.com/kkinnear/zprint)
+    -   [Cljstyle][]
+    -   [ZPrint][]
 -   [Cmake](https://cmake.org/)
-    -   [Cmake-format](https://github.com/cheshirekow/cmake_format)
+    -   [Cmake-format][]
 -   [Dart](https://dart.dev/)
-    -   [Dartfmt](https://dart.dev/tools/dart-format)
+    -   [Dartfmt][]
 -   [FISH](https://github.com/fish-shell/fish-shell)
-    -   [Fish_indent](https://fishshell.com/docs/current/cmds/fish_indent.html)
+    -   [Fish_indent][]
 -   [GN](https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md)
-    -   [Gn](https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md)
+    -   [Gn][]
 -   [Go](https://go.dev/)
-    -   [Gofmt](https://pkg.go.dev/cmd/gofmt)
+    -   [Gofmt][]
 -   [CSS](https://en.wikipedia.org/wiki/CSS)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [JS-beautify][]
+    -   [Prettier][]
 -   [SASS](https://sass-lang.com/)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [JS-beautify][]
 -   [SCSS](https://github.com/TryKickoff/scss)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [JS-beautify][]
+    -   [Prettier][]
 -   [LESS](https://lesscss.org/)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [JS-beautify][]
+    -   [Prettier][]
 -   [HTML](https://en.wikipedia.org/wiki/HTML)
-    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [JS-beautify][]
+    -   [Prettier][]
 -   [Kotlin](https://kotlinlang.org/)
-    -   [Ktfmt](https://github.com/facebookincubator/ktfmt)
+    -   [Ktfmt][]
 -   [Lua](https://www.lua.org/)
-    -   [LuaFormatterFiveOne](https://github.com/LuaDevelopmentTools/luaformatter)
+    -   [LuaFormatterFiveOne][]
 -   [Nix](https://nixos.wiki/wiki/Nix_Expression_Language)
-    -   [Nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)
+    -   [Nixpkgs-fmt][]
 -   [OCaml](https://ocaml.org/)
-    -   [OCamlformat](https://github.com/ocaml-ppx/ocamlformat)
+    -   [OCamlformat][]
 -   [Markdown](https://en.wikipedia.org/wiki/Markdown)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Prettier][]
 -   [YAML](https://yaml.org/)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Prettier][]
 -   [JSX](https://reactjs.org/docs/introducing-jsx.html)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Prettier][]
 -   [MDX](https://mdxjs.com/)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Prettier][]
 -   [Vue](https://vuejs.org/)
-    -   [Prettier](https://github.com/prettier/prettier)
+    -   [Prettier][]
 -   [Ruby](https://www.ruby-lang.org/)
-    -   [Rubocop](https://github.com/rubocop/rubocop)
+    -   [Rubocop][]
 -   [Rust](https://www.rust-lang.org/)
-    -   [Rustfmt](https://github.com/rust-lang/rustfmt)
+    -   [Rustfmt][]
 -   [Sh](https://en.wikipedia.org/wiki/Shell_script)
-    -   [Shfmt](https://github.com/mvdan/sh)
+    -   [Shfmt][]
 -   [Bash](https://www.gnu.org/software/bash/)
-    -   [Shfmt](https://github.com/mvdan/sh)
+    -   [Shfmt][]
 -   [Mksh](http://www.mirbsd.org/mksh.htm)
-    -   [Shfmt](https://github.com/mvdan/sh)
+    -   [Shfmt][]
 -   [TypeScript](https://www.typescriptlang.org/)
-    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Clang-format][]
+
+[clang-format]: https://clang.llvm.org/docs/ClangFormat.html
+[shfmt]: https://github.com/mvdan/sh
+[rustfmt]: https://github.com/rust-lang/rustfmt
+[rubocop]: https://github.com/rubocop/rubocop
+[prettier]: https://github.com/prettier/prettier
+[ocamlformat]: https://github.com/ocaml-ppx/ocamlformat
+[nixpkgs-fmt]: https://github.com/nix-community/nixpkgs-fmt
+[luaformatterfiveone]: https://github.com/LuaDevelopmentTools/luaformatter
+[ktfmt]: https://github.com/facebookincubator/ktfmt
+[js-beautify]: https://github.com/beautify-web/js-beautify
+[gofmt]: https://pkg.go.dev/cmd/gofmt
+[gn]: https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md
+[autopep8]: https://github.com/hhatto/autopep8
+[black]: https://github.com/psf/black
+[isort]: https://github.com/PyCQA/isort
+[yaph]: https://github.com/google/yapf
+[fish_indent]: https://fishshell.com/docs/current/cmds/fish_indent.html
+[dartfmt]: https://dart.dev/tools/dart-format
+[cmake-format]: https://github.com/cheshirekow/cmake_format
+[cljstyle]: https://github.com/greglook/cljstyle
+[zprint]: https://github.com/kkinnear/zprint
+[brittany]: https://github.com/lspitzner/brittany
+[hindent]: https://github.com/mihaimaruseac/hindent
+[buildifier]: https://github.com/bazelbuild/buildifier
 
 # Commands
 
