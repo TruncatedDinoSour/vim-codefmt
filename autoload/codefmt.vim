@@ -179,7 +179,7 @@ function! s:GetFormatter(...) abort
                             \ 's:GetSetupInstructions(v:val)'), "\n")
             else
                 let l:error = 'Not available. codefmt doesn''t have a default ' .
-                            \ 'formatter for this buffer. Retabbing instead.'
+                            \ 'formatter for this buffer. Using vim formatting instead.'
 
                 silent norm gg=G``
                 silent execute '%retab'

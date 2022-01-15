@@ -202,6 +202,10 @@ call s:plugin.Flag('zprint_executable', 'zprint')
 call s:plugin.Flag('fish_indent_executable', 'fish_indent')
 
 ""
+" The path to the ocamlformat executable.
+call s:plugin.Flag('ocamlformat_executable', 'ocamlformat')
+
+""
 " The path to the hindent executable.
 call s:plugin.Flag('hindent_executable', 'hindent')
 call s:plugin.Flag('hindent_indent_size', '2')

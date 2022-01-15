@@ -27,6 +27,7 @@ plugins.
 -   Shell (shfmt)
 -   [Vue](http://vuejs.org) (prettier)
 -   Nix (nixpkgs-fmt)
+-   [OCaml](https://ocaml.org) ([ocamlformat](https://github.com/ocaml-ppx/ocamlformat))
 
 # Commands
 
