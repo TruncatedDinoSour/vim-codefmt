@@ -55,6 +55,7 @@ call s:registry.SetValidator('codefmt#EnsureFormatter')
 
 " Formatters that are registered later are given more priority when deciding
 " what the default formatter will be for a particular file type.
+call s:registry.AddExtension(codefmt#rubocop#GetFormatter())
 call s:registry.AddExtension(codefmt#buildifier#GetFormatter())
 call s:registry.AddExtension(codefmt#clangformat#GetFormatter())
 call s:registry.AddExtension(codefmt#cljstyle#GetFormatter())

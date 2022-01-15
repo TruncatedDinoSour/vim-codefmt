@@ -180,6 +180,8 @@ function! s:GetFormatter(...) abort
             else
                 let l:error = 'Not available. codefmt doesn''t have a default ' .
                             \ 'formatter for this buffer. Retabbing instead.'
+
+                silent norm gg=G``
                 silent execute '%retab'
             endif
             call maktaba#error#Shout(l:error)
