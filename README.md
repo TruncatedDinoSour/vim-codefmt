@@ -70,6 +70,7 @@ plugins.
 -   [OCaml](https://ocaml.org/)
     -   [OCamlformat](https://github.com/ocaml-ppx/ocamlformat)
 -   [Markdown](https://en.wikipedia.org/wiki/Markdown)
+    -   [Prettier](https://github.com/prettier/prettier)
 -   [YAML](https://yaml.org/)
     -   [Prettier](https://github.com/prettier/prettier)
 -   [JSX](https://reactjs.org/docs/introducing-jsx.html)
