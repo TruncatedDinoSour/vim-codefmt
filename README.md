@@ -89,6 +89,8 @@ plugins.
     -   [Shfmt](https://github.com/mvdan/sh)
 -   [Mksh](http://www.mirbsd.org/mksh.htm)
     -   [Shfmt](https://github.com/mvdan/sh)
+-   [TypeScript](https://www.typescriptlang.org/)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
 
 # Commands
 
