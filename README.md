@@ -150,12 +150,12 @@ call neobundle#end()
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
 call plug#begin("...")
-    " ...
+" ...
 
-    Plug 'google/vim-maktaba'
-    Plug 'TruncatedDinosour/vim-codefmt'
+Plug 'google/vim-maktaba'
+Plug 'TruncatedDinosour/vim-codefmt'
 
-    " ...
+" ...
 call plug#end()
 ```
 
