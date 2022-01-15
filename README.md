@@ -34,7 +34,7 @@ plugins.
     -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
 -   [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
     -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
--   [Clojure]
+-   [Clojure](https://clojure.org/)
     -   [Cljstyle](https://github.com/greglook/cljstyle)
     -   [ZPrint](https://github.com/kkinnear/zprint)
 -   [Cmake](https://cmake.org/)
