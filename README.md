@@ -222,7 +222,7 @@ Assume a filetype `myft` and a formatter called `MyFormatter`.
 
     ```vim
     ""
-    " The path to the buildifier executable.
+    " The path to my formatter executable.
     call s:plugin.Flag('myformatter_executable', 'myformatter')
     ```
 
