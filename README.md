@@ -2,30 +2,92 @@ codefmt is a utility for syntax-aware code formatting. It contains several
 built-in formatters, and allows new formatters to be registered by other
 plugins.
 
-# Supported File-types
+# Supported file types
 
--   [Bazel](https://www.github.com/bazelbuild/bazel) BUILD files (buildifier)
--   C, C++ (clang-format)
--   [Clojure](https://clojure.org/) ([zprint](https://github.com/kkinnear/zprint),
-    [cljstyle](https://github.com/greglook/cljstyle))
--   CSS, Sass, SCSS, Less (js-beautify)
--   Dart (dartfmt)
--   Fish ([fish_indent](https://fishshell.com/docs/current/commands.html#fish_indent))
--   Go (gofmt)
--   [GN](https://www.chromium.org/developers/gn-build-configuration) (gn)
--   HTML (js-beautify)
--   Java (google-java-format or clang-format)
--   JavaScript (clang-format or [prettier](https://prettier.io))
--   JSON (js-beautify)
--   Kotlin ([ktfmt](https://github.com/facebookincubator/ktfmt))
--   Proto (clang-format)
--   Python (Autopep8, Black, Isort or YAPF)
--   Rust ([rustfmt](https://github.com/rust-lang/rustfmt))
--   TypeScript (clang-format)
--   Shell (shfmt)
--   [Vue](http://vuejs.org) (prettier)
--   Nix (nixpkgs-fmt)
--   [OCaml](https://ocaml.org) ([ocamlformat](https://github.com/ocaml-ppx/ocamlformat))
+-   [Python](https://www.python.org/)
+    -   [AutoPEP8](https://github.com/hhatto/autopep8)
+    -   [Black](https://github.com/psf/black)
+    -   [Isort](https://github.com/PyCQA/isort)
+    -   [YAPH](https://github.com/google/yapf)
+-   [Haskell](https://www.haskell.org/)
+    -   [Brittany](https://github.com/lspitzner/brittany)
+    -   [Hindent](https://github.com/mihaimaruseac/hindent)
+-   [Bazel](https://docs.bazel.build/versions/main/user-manual.html)
+    -   [Buildifier](https://github.com/bazelbuild/buildifier)
+-   [C](https:////en.wikipedia.org/wiki/C_%28programming_language%29)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+-   [C++](https://en.wikipedia.org/wiki/C%2B%2B)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+-   [Java](https://www.java.com/)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Google-java-format](https://github.com/google/google-java-format)
+-   [JavaScript](https://www.javascript.com/)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [JSON](https://en.wikipedia.org/wiki/JSON)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+-   [Protobuf](https://github.com/protocolbuffers/protobuf)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+-   [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+    -   [Clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+-   [Clojure]
+    -   [Cljstyle](https://github.com/greglook/cljstyle)
+    -   [ZPrint](https://github.com/kkinnear/zprint)
+-   [Cmake](https://cmake.org/)
+    -   [Cmake-format](https://github.com/cheshirekow/cmake_format)
+-   [Dart](https://dart.dev/)
+    -   [Dartfmt](https://dart.dev/tools/dart-format)
+-   [FISH](https://github.com/fish-shell/fish-shell)
+    -   [Fish_indent](https://fishshell.com/docs/current/cmds/fish_indent.html)
+-   [GN](https://chromium.googlesource.com/chromium/src/tools/gn/+/48062805e19b4697c5fbd926dc649c78b6aaa138/README.md)
+    -   [Gn](https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md)
+-   [Go](https://go.dev/)
+    -   [Gofmt](https://pkg.go.dev/cmd/gofmt)
+-   [CSS](https://en.wikipedia.org/wiki/CSS)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [SASS](https://sass-lang.com/)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+-   [SCSS](https://github.com/TryKickoff/scss)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [LESS](https://lesscss.org/)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [HTML](https://en.wikipedia.org/wiki/HTML)
+    -   [JS-beautify](https://github.com/beautify-web/js-beautify)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [Kotlin](https://kotlinlang.org/)
+    -   [Ktfmt](https://github.com/facebookincubator/ktfmt)
+-   [Lua](https://www.lua.org/)
+    -   [LuaFormatterFiveOne](https://github.com/LuaDevelopmentTools/luaformatter)
+-   [Nix](https://nixos.wiki/wiki/Nix_Expression_Language)
+    -   [Nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)
+-   [OCaml](https://ocaml.org/)
+    -   [OCamlformat](https://github.com/ocaml-ppx/ocamlformat)
+-   [Markdown](https://en.wikipedia.org/wiki/Markdown)
+-   [YAML](https://yaml.org/)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [JSX](https://reactjs.org/docs/introducing-jsx.html)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [MDX](https://mdxjs.com/)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [Vue](https://vuejs.org/)
+    -   [Prettier](https://github.com/prettier/prettier)
+-   [Ruby](https://www.ruby-lang.org/)
+    -   [Rubocop](https://github.com/rubocop/rubocop)
+-   [Rust](https://www.rust-lang.org/)
+    -   [Rustfmt](https://github.com/rust-lang/rustfmt)
+-   [Sh](https://en.wikipedia.org/wiki/Shell_script)
+    -   [Shfmt](https://github.com/mvdan/sh)
+-   [Bash](https://www.gnu.org/software/bash/)
+    -   [Shfmt](https://github.com/mvdan/sh)
+-   [Mksh](http://www.mirbsd.org/mksh.htm)
+    -   [Shfmt](https://github.com/mvdan/sh)
 
 # Commands
 
@@ -37,36 +99,71 @@ formatting.
 
 Before:
 
-```cpp
+```c
 int foo(int * x) { return * x** x ; }
 ```
 
 After running `:FormatCode`:
 
-```cpp
+```c
 int foo(int* x) { return *x * *x; }
 ```
 
 # Installation
 
-This example uses [Vundle](https://github.com/gmarik/Vundle.vim), whose
-plugin-adding command is `Plugin`.
+_These are only few examples_
+
+## [Vundle](https://github.com/VundleVim/Vundle.vim)
 
 ```vim
+call vundle#begin()
+" ...
+
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
 Plugin 'google/vim-maktaba'
 Plugin 'TruncatedDinosour/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
+
 " ...
 call vundle#end()
-" the glaive#Install() should go after the "call vundle#end()"
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+```
+
+## [NeoBundle](https://github.com/Shougo/neobundle.vim)
+
+```vim
+call neobundle#begin(expand('...'))
+" ...
+
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+NeoBundle 'google/vim-maktaba'
+NeoBundle 'TruncatedDinosour/vim-codefmt'
+
+" ...
+call neobundle#end()
+```
+
+## [VimPlug](https://github.com/junegunn/vim-plug)
+
+```vim
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+call plug#begin("...")
+    " ...
+
+    Plug 'google/vim-maktaba'
+    Plug 'TruncatedDinosour/vim-codefmt'
+
+    " ...
+call plug#end()
+```
+
+# [Pathogen](https://github.com/tpope/vim-pathogen)
+
+```sh
+$ cd ~/.vim/bundle
+$ git clone https://github.com/google/vim-maktaba
+$ git clone https://github.com/TruncatedDinosour/vim-codefmt
 ```
 
 Make sure you have updated maktaba recently. Codefmt depends upon maktaba
@@ -78,25 +175,14 @@ Want to just sit back and let autoformat happen automatically? Add this to your
 `vimrc` (or any subset):
 
 ```vim
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
+autocmd FileType * silent FormatCode
 ```
 
 # Configuring formatters
 
-Most formatters have some options available that can be configured via
-[Glaive](https://www.github.com/google/vim-glaive)
+Most formatters have some options available that can be configured with variables
+but you can also use [Glaive](https://github.com/google/vim-glaive)
+
 You can get a quick view of all codefmt flags by executing `:Glaive codefmt`, or
 start typing flag names and use tab completion. See `:help Glaive` for usage
 details.
@@ -116,11 +202,7 @@ vroom/FORMATTER-NAME.vroom to learn more about usage for individual formatters.
 
 ## Creating a New Formatter
 
-Assume a filetype `myft` and a formatter called `MyFormatter`. Our detailed
-guide to creating a formatter [lives
-here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
-
--   Create an issue for your new formatter and discuss!
+Assume a filetype `myft` and a formatter called `MyFormatter`.
 
 -   Create a new file in `autoload/codefmt/myformatter.vim` See
     `autoload/codefmt/buildifier.vim for an example. This is where all the
@@ -143,9 +225,6 @@ here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
     call s:plugin.Flag('myformatter_executable', 'myformatter')
     ```
 
--   Update the README.md to mention your new filetype!
+-   Update the README.md to mention your new filetype
 
-That's it! Of course, the complicated step is in the details of
-`myformatter.vim`.
-
-// TODO(kashomon): Create a worked example formatter.
+Thats it! Now make a pull request.
