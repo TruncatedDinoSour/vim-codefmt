@@ -75,5 +75,4 @@ call s:registry.AddExtension(codefmt#isort#GetFormatter())
 call s:registry.AddExtension(codefmt#yapf#GetFormatter())
 call s:registry.AddExtension(codefmt#rustfmt#GetFormatter())
 call s:registry.AddExtension(codefmt#shfmt#GetFormatter())
-call s:registry.AddExtension(codefmt#xmllint#GetFormatter())
 
