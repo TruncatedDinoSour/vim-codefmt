@@ -32,7 +32,7 @@
 
 let [s:plugin, s:enter] = maktaba#plugin#Enter(expand('<sfile>:p'))
 if !s:enter
-  finish
+    finish
 endif
 
 
@@ -48,7 +48,7 @@ execute 'nnoremap <unique> <silent>' s:prefix . 'b' ':FormatCode<CR>'
 " For instance, <PREFIX>i{ will format all lines inside the enclosing curly
 " braces.
 execute 'nnoremap <unique> <silent>' s:prefix
-    \ ':set opfunc=codefmt#FormatMap<CR>g@'
+            \ ':set opfunc=codefmt#FormatMap<CR>g@'
 
 ""
 " Format the current line or range using the formatter associated with the

@@ -20,32 +20,32 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Formatter: black
 function! codefmt#black#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'black',
-      \ 'setup_instructions': 'Install black ' .
-          \ '(https://pypi.python.org/pypi/black/).'}
+    let l:formatter = {
+                \ 'name': 'black',
+                \ 'setup_instructions': 'Install black ' .
+                \ '(https://pypi.python.org/pypi/black/).'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('black_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('black_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'python'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'python'
+    endfunction
 
-  ""
-  " Reformat the current buffer with black or the binary named in
-  " @flag(black_executable)
-  "
-  " We implement Format(), and not FormatRange{,s}(), because black doesn't
-  " provide a hook for formatting a range
-  function l:formatter.Format() abort
-    let l:executable = s:plugin.Flag('black_executable')
+    ""
+    " Reformat the current buffer with black or the binary named in
+    " @flag(black_executable)
+    "
+    " We implement Format(), and not FormatRange{,s}(), because black doesn't
+    " provide a hook for formatting a range
+    function l:formatter.Format() abort
+        let l:executable = s:plugin.Flag('black_executable')
 
-    call codefmt#formatterhelpers#Format([
-        \ l:executable,
-        \ '-'])
-  endfunction
+        call codefmt#formatterhelpers#Format([
+                    \ l:executable,
+                    \ '-'])
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

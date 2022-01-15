@@ -20,32 +20,32 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Formatter: isort
 function! codefmt#isort#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'isort',
-      \ 'setup_instructions': 'Install isort ' .
-          \ '(https://pypi.python.org/pypi/isort/).'}
+    let l:formatter = {
+                \ 'name': 'isort',
+                \ 'setup_instructions': 'Install isort ' .
+                \ '(https://pypi.python.org/pypi/isort/).'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('isort_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('isort_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'python'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'python'
+    endfunction
 
-  ""
-  " Reformat the current buffer with black or the binary named in
-  " @flag(isort_executable)
-  "
-  " We implement Format(), and not FormatRange{,s}(), because black doesn't
-  " provide a hook for formatting a range
-  function l:formatter.Format() abort
-    let l:executable = s:plugin.Flag('isort_executable')
+    ""
+    " Reformat the current buffer with black or the binary named in
+    " @flag(isort_executable)
+    "
+    " We implement Format(), and not FormatRange{,s}(), because black doesn't
+    " provide a hook for formatting a range
+    function l:formatter.Format() abort
+        let l:executable = s:plugin.Flag('isort_executable')
 
-    call codefmt#formatterhelpers#Format([
-        \ l:executable,
-        \ '-'])
-  endfunction
+        call codefmt#formatterhelpers#Format([
+                    \ l:executable,
+                    \ '-'])
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

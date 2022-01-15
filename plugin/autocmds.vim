@@ -19,19 +19,19 @@
 
 let [s:plugin, s:enter] = maktaba#plugin#Enter(expand('<sfile>:p'))
 if !s:enter
-  finish
+    finish
 endif
 
 
 ""
 " Automatically reformat when saving files.
 augroup codefmt
-  autocmd!
-  autocmd BufWritePre * call s:FmtIfAutoEnabled()
+    autocmd!
+    autocmd BufWritePre * call s:FmtIfAutoEnabled()
 augroup END
 
 function! s:FmtIfAutoEnabled() abort
-  if get(b:, 'codefmt_auto_format_buffer')
-    call codefmt#FormatBuffer()
-  endif
+    if get(b:, 'codefmt_auto_format_buffer')
+        call codefmt#FormatBuffer()
+    endif
 endfunction

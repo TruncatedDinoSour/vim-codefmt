@@ -1,32 +1,32 @@
 [![Travis Build Status](https://travis-ci.org/google/vim-codefmt.svg?branch=master)](https://travis-ci.org/google/vim-codefmt)
 
-codefmt is a utility for syntax-aware code formatting.  It contains several
+codefmt is a utility for syntax-aware code formatting. It contains several
 built-in formatters, and allows new formatters to be registered by other
 plugins.
 
 # Supported File-types
 
-* [Bazel](https://www.github.com/bazelbuild/bazel) BUILD files (buildifier)
-* C, C++ (clang-format)
-* [Clojure](https://clojure.org/) ([zprint](https://github.com/kkinnear/zprint),
-  [cljstyle](https://github.com/greglook/cljstyle))
-* CSS, Sass, SCSS, Less (js-beautify)
-* Dart (dartfmt)
-* Fish ([fish_indent](https://fishshell.com/docs/current/commands.html#fish_indent))
-* Go (gofmt)
-* [GN](https://www.chromium.org/developers/gn-build-configuration) (gn)
-* HTML (js-beautify)
-* Java (google-java-format or clang-format)
-* JavaScript (clang-format or [prettier](https://prettier.io))
-* JSON (js-beautify)
-* Kotlin ([ktfmt](https://github.com/facebookincubator/ktfmt))
-* Proto (clang-format)
-* Python (Autopep8, Black, Isort or YAPF)
-* Rust ([rustfmt](https://github.com/rust-lang/rustfmt))
-* TypeScript (clang-format)
-* Shell (shfmt)
-* [Vue](http://vuejs.org) (prettier)
-* Nix (nixpkgs-fmt)
+-   [Bazel](https://www.github.com/bazelbuild/bazel) BUILD files (buildifier)
+-   C, C++ (clang-format)
+-   [Clojure](https://clojure.org/) ([zprint](https://github.com/kkinnear/zprint),
+    [cljstyle](https://github.com/greglook/cljstyle))
+-   CSS, Sass, SCSS, Less (js-beautify)
+-   Dart (dartfmt)
+-   Fish ([fish_indent](https://fishshell.com/docs/current/commands.html#fish_indent))
+-   Go (gofmt)
+-   [GN](https://www.chromium.org/developers/gn-build-configuration) (gn)
+-   HTML (js-beautify)
+-   Java (google-java-format or clang-format)
+-   JavaScript (clang-format or [prettier](https://prettier.io))
+-   JSON (js-beautify)
+-   Kotlin ([ktfmt](https://github.com/facebookincubator/ktfmt))
+-   Proto (clang-format)
+-   Python (Autopep8, Black, Isort or YAPF)
+-   Rust ([rustfmt](https://github.com/rust-lang/rustfmt))
+-   TypeScript (clang-format)
+-   Shell (shfmt)
+-   [Vue](http://vuejs.org) (prettier)
+-   Nix (nixpkgs-fmt)
 
 # Commands
 
@@ -121,13 +121,13 @@ Assume a filetype `myft` and a formatter called `MyFormatter`. Our detailed
 guide to creating a formatter [lives
 here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
 
-*   Create an issue for your new formatter and discuss!
+-   Create an issue for your new formatter and discuss!
 
-*   Create a new file in `autoload/codefmt/myformatter.vim` See
+-   Create a new file in `autoload/codefmt/myformatter.vim` See
     `autoload/codefmt/buildifier.vim for an example. This is where all the
     logic for formatting goes.
 
-*   Register the formatter in
+-   Register the formatter in
     [plugin/register.vim](plugin/register.vim)
     with:
 
@@ -135,7 +135,7 @@ here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
     call s:registry.AddExtension(codefmt#myformatter#GetFormatter())
     ```
 
-*   Create a flag in
+-   Create a flag in
     [instant/flags.vim](instant/flags.vim)
 
     ```vim
@@ -144,7 +144,7 @@ here](https://github.com/google/vim-codefmt/wiki/Formatter-Integration-Guide).
     call s:plugin.Flag('myformatter_executable', 'myformatter')
     ```
 
-*   Update the README.md to mention your new filetype!
+-   Update the README.md to mention your new filetype!
 
 That's it! Of course, the complicated step is in the details of
 `myformatter.vim`.

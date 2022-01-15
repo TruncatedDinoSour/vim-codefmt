@@ -20,61 +20,61 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Formatter: dartfmt
 function! codefmt#dartfmt#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'dartfmt',
-      \ 'setup_instructions': 'Install the Dart SDK from ' .
-          \ 'https://www.dartlang.org/tools/sdk/'}
+    let l:formatter = {
+                \ 'name': 'dartfmt',
+                \ 'setup_instructions': 'Install the Dart SDK from ' .
+                \ 'https://www.dartlang.org/tools/sdk/'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('dartfmt_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('dartfmt_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'dart'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'dart'
+    endfunction
 
-  ""
-  " Reformat the current buffer with dartfmt or the binary named in
-  " @flag(dartfmt_executable}, only targetting the range from {startline} to
-  " {endline}
-  function l:formatter.FormatRange(startline, endline) abort
-    let l:cmd = [ s:plugin.Flag('dartfmt_executable') ]
-    try
-      " dartfmt does not support range formatting yet:
-      " https://github.com/dart-lang/dart_style/issues/92
-      call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
-        \ a:startline, a:endline, l:cmd)
-    catch /ERROR(ShellError):/
-      " Parse all the errors and stick them in the quickfix list.
-      let l:errors = []
-      for l:line in split(v:exception, "\n")
-        let l:tokens = matchlist(l:line,
-            \ '\C\v^line (\d+), column (\d+) of stdin: (.*)')
-        if !empty(l:tokens)
-          call add(l:errors, {
-              \ 'filename': @%,
-              \ 'lnum': l:tokens[1] + a:startline - 1,
-              \ 'col': l:tokens[2],
-              \ 'text': l:tokens[3]})
-        endif
-      endfor
+    ""
+    " Reformat the current buffer with dartfmt or the binary named in
+    " @flag(dartfmt_executable}, only targetting the range from {startline} to
+    " {endline}
+    function l:formatter.FormatRange(startline, endline) abort
+        let l:cmd = [ s:plugin.Flag('dartfmt_executable') ]
+        try
+            " dartfmt does not support range formatting yet:
+            " https://github.com/dart-lang/dart_style/issues/92
+            call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
+                        \ a:startline, a:endline, l:cmd)
+        catch /ERROR(ShellError):/
+            " Parse all the errors and stick them in the quickfix list.
+            let l:errors = []
+            for l:line in split(v:exception, "\n")
+                let l:tokens = matchlist(l:line,
+                            \ '\C\v^line (\d+), column (\d+) of stdin: (.*)')
+                if !empty(l:tokens)
+                    call add(l:errors, {
+                                \ 'filename': @%,
+                                \ 'lnum': l:tokens[1] + a:startline - 1,
+                                \ 'col': l:tokens[2],
+                                \ 'text': l:tokens[3]})
+                endif
+            endfor
 
-      if empty(l:errors)
-        " Couldn't parse dartfmt error format; display it all.
-        call maktaba#error#Shout(
-            \ 'Failed to format range; showing all errors: %s', v:exception)
-      else
-        let l:errorHeaderLines = split(v:exception, "\n")[1 : 5]
-        let l:errorHeader = join(l:errorHeaderLines, "\n")
-        call maktaba#error#Shout(
-            \ "Error formatting file:\n%s\n\nMore errors in the fixlist.",
-            \ l:errorHeader)
-        call setqflist(l:errors, 'r')
-        cc 1
-      endif
-    endtry
-  endfunction
+            if empty(l:errors)
+                " Couldn't parse dartfmt error format; display it all.
+                call maktaba#error#Shout(
+                            \ 'Failed to format range; showing all errors: %s', v:exception)
+            else
+                let l:errorHeaderLines = split(v:exception, "\n")[1 : 5]
+                let l:errorHeader = join(l:errorHeaderLines, "\n")
+                call maktaba#error#Shout(
+                            \ "Error formatting file:\n%s\n\nMore errors in the fixlist.",
+                            \ l:errorHeader)
+                call setqflist(l:errors, 'r')
+                cc 1
+            endif
+        endtry
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction
 

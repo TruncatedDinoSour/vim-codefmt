@@ -20,43 +20,43 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Formatter: yapf
 function! codefmt#yapf#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'yapf',
-      \ 'setup_instructions': 'Install yapf ' .
-          \ '(https://pypi.python.org/pypi/yapf/).'}
+    let l:formatter = {
+                \ 'name': 'yapf',
+                \ 'setup_instructions': 'Install yapf ' .
+                \ '(https://pypi.python.org/pypi/yapf/).'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('yapf_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('yapf_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'python'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'python'
+    endfunction
 
-  ""
-  " Reformat the current buffer with yapf or the binary named in
-  " @flag(yapf_executable), only targeting the range between {startline} and
-  " {endline}.
-  " @throws ShellError
-  function l:formatter.FormatRange(startline, endline) abort
-    let l:executable = s:plugin.Flag('yapf_executable')
+    ""
+    " Reformat the current buffer with yapf or the binary named in
+    " @flag(yapf_executable), only targeting the range between {startline} and
+    " {endline}.
+    " @throws ShellError
+    function l:formatter.FormatRange(startline, endline) abort
+        let l:executable = s:plugin.Flag('yapf_executable')
 
-    call maktaba#ensure#IsNumber(a:startline)
-    call maktaba#ensure#IsNumber(a:endline)
-    let l:lines = getline(1, line('$'))
+        call maktaba#ensure#IsNumber(a:startline)
+        call maktaba#ensure#IsNumber(a:endline)
+        let l:lines = getline(1, line('$'))
 
-    let l:cmd = [l:executable, '--lines=' . a:startline . '-' . a:endline]
-    let l:input = join(l:lines, "\n")
+        let l:cmd = [l:executable, '--lines=' . a:startline . '-' . a:endline]
+        let l:input = join(l:lines, "\n")
 
-    let l:result = maktaba#syscall#Create(l:cmd).WithStdin(l:input).Call(0)
-    if v:shell_error
-      call maktaba#error#Shout('Error formatting file: %s', l:result.stderr)
-      return
-    endif
-    let l:formatted = split(l:result.stdout, "\n")
+        let l:result = maktaba#syscall#Create(l:cmd).WithStdin(l:input).Call(0)
+        if v:shell_error
+            call maktaba#error#Shout('Error formatting file: %s', l:result.stderr)
+            return
+        endif
+        let l:formatted = split(l:result.stdout, "\n")
 
-    call maktaba#buffer#Overwrite(1, line('$'), l:formatted)
-  endfunction
+        call maktaba#buffer#Overwrite(1, line('$'), l:formatted)
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

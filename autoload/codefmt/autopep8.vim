@@ -20,7 +20,7 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Invalidates the cached autopep8 version detection info.
 function! codefmt#autopep8#InvalidateVersion() abort
-  unlet! s:autopep8_supports_range
+    unlet! s:autopep8_supports_range
 endfunction
 
 
@@ -28,58 +28,58 @@ endfunction
 " @private
 " Formatter: autopep8
 function! codefmt#autopep8#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'autopep8',
-      \ 'setup_instructions': 'Install autopep8 ' .
-          \ '(https://pypi.python.org/pypi/autopep8/).'}
+    let l:formatter = {
+                \ 'name': 'autopep8',
+                \ 'setup_instructions': 'Install autopep8 ' .
+                \ '(https://pypi.python.org/pypi/autopep8/).'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('autopep8_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('autopep8_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'python'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'python'
+    endfunction
 
-  ""
-  " Reformat the current buffer with autopep8 or the binary named in
-  " @flag(autopep8_executable), only targeting the range between {startline} and
-  " {endline}.
-  " @throws ShellError
-  function l:formatter.FormatRange(startline, endline) abort
-    let l:executable = s:plugin.Flag('autopep8_executable')
-    if !exists('s:autopep8_supports_range')
-      let l:version_call =
-          \ maktaba#syscall#Create([l:executable, '--version']).Call()
-      " In some cases version is written to stderr, in some to stdout
-      let l:version_output = empty(version_call.stderr) ?
-          \ version_call.stdout : version_call.stderr
-      let l:autopep8_version =
-          \ matchlist(l:version_output, '\m\Cautopep8 \(\d\+\)\.')
-      if empty(l:autopep8_version)
-        throw maktaba#error#Failure(
-            \ 'Unable to parse version from `%s --version`: %s',
-            \ l:executable, l:version_output)
-      else
-        let s:autopep8_supports_range = l:autopep8_version[1] >= 1
-      endif
-    endif
+    ""
+    " Reformat the current buffer with autopep8 or the binary named in
+    " @flag(autopep8_executable), only targeting the range between {startline} and
+    " {endline}.
+    " @throws ShellError
+    function l:formatter.FormatRange(startline, endline) abort
+        let l:executable = s:plugin.Flag('autopep8_executable')
+        if !exists('s:autopep8_supports_range')
+            let l:version_call =
+                        \ maktaba#syscall#Create([l:executable, '--version']).Call()
+            " In some cases version is written to stderr, in some to stdout
+            let l:version_output = empty(version_call.stderr) ?
+                        \ version_call.stdout : version_call.stderr
+            let l:autopep8_version =
+                        \ matchlist(l:version_output, '\m\Cautopep8 \(\d\+\)\.')
+            if empty(l:autopep8_version)
+                throw maktaba#error#Failure(
+                            \ 'Unable to parse version from `%s --version`: %s',
+                            \ l:executable, l:version_output)
+            else
+                let s:autopep8_supports_range = l:autopep8_version[1] >= 1
+            endif
+        endif
 
-    call maktaba#ensure#IsNumber(a:startline)
-    call maktaba#ensure#IsNumber(a:endline)
+        call maktaba#ensure#IsNumber(a:startline)
+        call maktaba#ensure#IsNumber(a:endline)
 
-    if s:autopep8_supports_range
-      call codefmt#formatterhelpers#Format([
-          \ l:executable,
-          \ '--range', string(a:startline), string(a:endline),
-          \ '-'])
-    else
-      call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
-          \ a:startline,
-          \ a:endline,
-          \ [l:executable, '-'])
-    endif
-  endfunction
+        if s:autopep8_supports_range
+            call codefmt#formatterhelpers#Format([
+                        \ l:executable,
+                        \ '--range', string(a:startline), string(a:endline),
+                        \ '-'])
+        else
+            call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
+                        \ a:startline,
+                        \ a:endline,
+                        \ [l:executable, '-'])
+        endif
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

@@ -28,7 +28,7 @@
 
 let [s:plugin, s:enter] = maktaba#plugin#Enter(expand('<sfile>:p'))
 if !s:enter
-  finish
+    finish
 endif
 
 
@@ -37,9 +37,9 @@ endif
 " recent Vim (newer than is actually in Travis/Xenial).
 " See https://github.com/google/vim-maktaba/issues/173
 if !maktaba#IsAtLeastVersion('1.12.0')
-  call maktaba#error#Shout('Codefmt requires maktaba version 1.12.0.')
-  call maktaba#error#Shout('You have maktaba version %s.', maktaba#VERSION)
-  call maktaba#error#Shout('Please update your maktaba install.')
+    call maktaba#error#Shout('Codefmt requires maktaba version 1.12.0.')
+    call maktaba#error#Shout('You have maktaba version %s.', maktaba#VERSION)
+    call maktaba#error#Shout('Please update your maktaba install.')
 endif
 
 
@@ -49,7 +49,7 @@ call s:plugin.Flag('autopep8_executable', 'autopep8')
 " Invalidate cache of detected autopep8 version when this is changed, regardless
 " of {value} arg.
 call s:plugin.flags.autopep8_executable.AddCallback(
-    \ maktaba#function#FromExpr('codefmt#autopep8#InvalidateVersion()'), 0)
+            \ maktaba#function#FromExpr('codefmt#autopep8#InvalidateVersion()'), 0)
 
 ""
 " The path to the clang-format executable. String, list, or callable that
@@ -58,7 +58,7 @@ call s:plugin.Flag('clang_format_executable', 'clang-format')
 " Invalidate cache of detected clang-format version when this is changed,
 " regardless of {value} arg.
 call s:plugin.flags.clang_format_executable.AddCallback(
-    \ maktaba#function#FromExpr('codefmt#clangformat#InvalidateVersion()'), 0)
+            \ maktaba#function#FromExpr('codefmt#clangformat#InvalidateVersion()'), 0)
 
 ""
 " Formatting style for clang-format to use. Either a string or callable that
@@ -138,7 +138,7 @@ call s:plugin.Flag('prettier_options', [])
 ""
 " @private
 function s:LookupPrettierExecutable() abort
-  return executable('npx') ? ['npx', '--no-install', 'prettier'] : 'prettier'
+    return executable('npx') ? ['npx', '--no-install', 'prettier'] : 'prettier'
 endfunction
 
 ""
@@ -150,7 +150,7 @@ call s:plugin.Flag('prettier_executable', function('s:LookupPrettierExecutable')
 " Invalidate cache of detected prettier availability whenever
 " prettier_executable changes.
 call s:plugin.flags.prettier_executable.AddCallback(
-    \ maktaba#function#FromExpr('codefmt#prettier#InvalidateIsAvailable()'), 0)
+            \ maktaba#function#FromExpr('codefmt#prettier#InvalidateIsAvailable()'), 0)
 
 ""
 " Command line arguments to feed rustfmt. Either a list or callable that
@@ -166,7 +166,7 @@ call s:plugin.Flag('rustfmt_executable', 'rustfmt')
 " This is declared above zprint_options to avoid interfering with vimdoc parsing
 " the maktaba flag.
 function s:ZprintOptions() abort
-  return &textwidth ? ['{:width ' . &textwidth . '}'] : []
+    return &textwidth ? ['{:width ' . &textwidth . '}'] : []
 endfunction
 
 ""

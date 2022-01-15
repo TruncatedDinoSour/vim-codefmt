@@ -25,13 +25,13 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 "
 " @throws ShellError if the {cmd} system call fails
 function! codefmt#formatterhelpers#Format(cmd) abort
-  let l:lines = getline(1, line('$'))
-  let l:input = join(l:lines, "\n")
+    let l:lines = getline(1, line('$'))
+    let l:input = join(l:lines, "\n")
 
-  let l:result = maktaba#syscall#Create(a:cmd).WithStdin(l:input).Call()
-  let l:formatted = split(l:result.stdout, "\n")
+    let l:result = maktaba#syscall#Create(a:cmd).WithStdin(l:input).Call()
+    let l:formatted = split(l:result.stdout, "\n")
 
-  call maktaba#buffer#Overwrite(1, line('$'), l:formatted)
+    call maktaba#buffer#Overwrite(1, line('$'), l:formatted)
 endfunction
 
 
@@ -51,20 +51,20 @@ endfunction
 "
 " @throws ShellError if the {cmd} system call fails
 function! codefmt#formatterhelpers#AttemptFakeRangeFormatting(
-    \ startline, endline, cmd) abort
-  call maktaba#ensure#IsNumber(a:startline)
-  call maktaba#ensure#IsNumber(a:endline)
+            \ startline, endline, cmd) abort
+    call maktaba#ensure#IsNumber(a:startline)
+    call maktaba#ensure#IsNumber(a:endline)
 
-  let l:lines = getline(1, line('$'))
-  let l:input = join(l:lines[a:startline - 1 : a:endline - 1], "\n")
+    let l:lines = getline(1, line('$'))
+    let l:input = join(l:lines[a:startline - 1 : a:endline - 1], "\n")
 
-  let l:result = maktaba#syscall#Create(a:cmd).WithStdin(l:input).Call()
-  let l:formatted = split(l:result.stdout, "\n")
-  " Special case empty slice: neither l:lines[:0] nor l:lines[:-1] is right.
-  let l:before = a:startline > 1 ? l:lines[ : a:startline - 2] : []
-  let l:full_formatted = l:before + l:formatted + l:lines[a:endline :]
+    let l:result = maktaba#syscall#Create(a:cmd).WithStdin(l:input).Call()
+    let l:formatted = split(l:result.stdout, "\n")
+    " Special case empty slice: neither l:lines[:0] nor l:lines[:-1] is right.
+    let l:before = a:startline > 1 ? l:lines[ : a:startline - 2] : []
+    let l:full_formatted = l:before + l:formatted + l:lines[a:endline :]
 
-  call maktaba#buffer#Overwrite(1, line('$'), l:full_formatted)
+    call maktaba#buffer#Overwrite(1, line('$'), l:full_formatted)
 endfunction
 
 
@@ -77,33 +77,33 @@ endfunction
 "
 " @throws WrongType if the flag doesn't resolve to a string or array
 function! codefmt#formatterhelpers#ResolveFlagToArray(flag_name) abort
-  let l:FlagFn = s:plugin.Flag(a:flag_name)
-  if maktaba#value#IsFuncref(l:FlagFn)
-    let l:value = maktaba#function#Call(l:FlagFn)
-  else
-    let l:value = l:FlagFn
-  endif
-
-  " After (conditionally) calling the function, the resulting value should be
-  " either a list that we can use directly, or a string that we can treat as
-  " a single-element list, mainly for backward compatibility.
-  if maktaba#value#IsString(l:value)
-    if l:value =~ '\s'
-      " Uh oh, there are spaces in the string. Rather than guessing user intent
-      " with shell quoting and word splitting, handle this (hopefully unusual)
-      " case by telling them to update their configuration.
-      throw maktaba#error#WrongType(
-            \ '%s flag is a string with spaces, please make it a list. ' .
-            \ 'Resolved value was: %s',
-            \ a:flag_name, l:value)
+    let l:FlagFn = s:plugin.Flag(a:flag_name)
+    if maktaba#value#IsFuncref(l:FlagFn)
+        let l:value = maktaba#function#Call(l:FlagFn)
+    else
+        let l:value = l:FlagFn
     endif
-    " Convert spaceless string to single-element list.
-    return [l:value]
-  elseif maktaba#value#IsList(l:value)
-    return l:value
-  endif
 
-  throw maktaba#error#WrongType(
-      \ '%s flag should be a list after calling. Found %s',
-      \ a:flag_name, maktaba#value#TypeName(l:value))
+    " After (conditionally) calling the function, the resulting value should be
+    " either a list that we can use directly, or a string that we can treat as
+    " a single-element list, mainly for backward compatibility.
+    if maktaba#value#IsString(l:value)
+        if l:value =~ '\s'
+            " Uh oh, there are spaces in the string. Rather than guessing user intent
+            " with shell quoting and word splitting, handle this (hopefully unusual)
+            " case by telling them to update their configuration.
+            throw maktaba#error#WrongType(
+                        \ '%s flag is a string with spaces, please make it a list. ' .
+                        \ 'Resolved value was: %s',
+                        \ a:flag_name, l:value)
+        endif
+        " Convert spaceless string to single-element list.
+        return [l:value]
+    elseif maktaba#value#IsList(l:value)
+        return l:value
+    endif
+
+    throw maktaba#error#WrongType(
+                \ '%s flag should be a list after calling. Found %s',
+                \ a:flag_name, maktaba#value#TypeName(l:value))
 endfunction

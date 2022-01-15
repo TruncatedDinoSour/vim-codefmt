@@ -17,32 +17,32 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 
 
 function! codefmt#fish_indent#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'fish_indent',
-      \ 'setup_instructions': 'Install fish_indent (https://fishshell.com/docs/current/commands.html#fish_indent)' .
-          \ ' and configure the fish_indent_executable flag'}
+    let l:formatter = {
+                \ 'name': 'fish_indent',
+                \ 'setup_instructions': 'Install fish_indent (https://fishshell.com/docs/current/commands.html#fish_indent)' .
+                \ ' and configure the fish_indent_executable flag'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('fish_indent_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('fish_indent_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'fish'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'fish'
+    endfunction
 
-  ""
-  " Reformat the current buffer with fish_indent or the binary named in
-  " @flag(fish_indent_executable), only targeting the range between {startline}
-  " and {endline}.
-  function l:formatter.FormatRange(startline, endline) abort
-    let l:cmd = [ s:plugin.Flag('fish_indent_executable') ]
-    call maktaba#ensure#IsNumber(a:startline)
-    call maktaba#ensure#IsNumber(a:endline)
-    " fish_indent does not support range formatting yet:
-    " https://github.com/fish-shell/fish-shell/issues/6490
-    call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
-        \ a:startline, a:endline, l:cmd)
-  endfunction
+    ""
+    " Reformat the current buffer with fish_indent or the binary named in
+    " @flag(fish_indent_executable), only targeting the range between {startline}
+    " and {endline}.
+    function l:formatter.FormatRange(startline, endline) abort
+        let l:cmd = [ s:plugin.Flag('fish_indent_executable') ]
+        call maktaba#ensure#IsNumber(a:startline)
+        call maktaba#ensure#IsNumber(a:endline)
+        " fish_indent does not support range formatting yet:
+        " https://github.com/fish-shell/fish-shell/issues/6490
+        call codefmt#formatterhelpers#AttemptFakeRangeFormatting(
+                    \ a:startline, a:endline, l:cmd)
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

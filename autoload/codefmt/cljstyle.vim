@@ -20,30 +20,30 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 " @private
 " Formatter: cljstyle
 function! codefmt#cljstyle#GetFormatter() abort
-  let l:formatter = {
-        \ 'name': 'cljstyle',
-        \ 'setup_instructions':
-        \ 'Install cljstyle (https://github.com/greglook/cljstyle) ' .
-        \ 'and configure the cljstyle_executable flag'}
+    let l:formatter = {
+                \ 'name': 'cljstyle',
+                \ 'setup_instructions':
+                \ 'Install cljstyle (https://github.com/greglook/cljstyle) ' .
+                \ 'and configure the cljstyle_executable flag'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('cljstyle_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('cljstyle_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'clojure'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'clojure'
+    endfunction
 
-  ""
-  " Reformat the current buffer with cljstyle.
-  "
-  " We implement Format(), and not FormatRange{,s}(), because cljstyle doesn't
-  " provide a hook for formatting a range
-  function l:formatter.Format() abort
-    let l:cmd = [s:plugin.Flag('cljstyle_executable'), 'pipe']
+    ""
+    " Reformat the current buffer with cljstyle.
+    "
+    " We implement Format(), and not FormatRange{,s}(), because cljstyle doesn't
+    " provide a hook for formatting a range
+    function l:formatter.Format() abort
+        let l:cmd = [s:plugin.Flag('cljstyle_executable'), 'pipe']
 
-    call codefmt#formatterhelpers#Format(l:cmd)
-  endfunction
+        call codefmt#formatterhelpers#Format(l:cmd)
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction

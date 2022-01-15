@@ -21,29 +21,29 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 "
 " Formatter provider for .nix files using nixpkgs-fmt.
 function! codefmt#nixpkgs_fmt#GetFormatter() abort
-  let l:formatter = {
-      \ 'name': 'nixpkgs-fmt',
-      \ 'setup_instructions': 'Install nixpkgs-fmt. ' .
-          \ '(https://github.com/nix-community/nixpkgs-fmt).'}
+    let l:formatter = {
+                \ 'name': 'nixpkgs-fmt',
+                \ 'setup_instructions': 'Install nixpkgs-fmt. ' .
+                \ '(https://github.com/nix-community/nixpkgs-fmt).'}
 
-  function l:formatter.IsAvailable() abort
-    return executable(s:plugin.Flag('nixpkgs_fmt_executable'))
-  endfunction
+    function l:formatter.IsAvailable() abort
+        return executable(s:plugin.Flag('nixpkgs_fmt_executable'))
+    endfunction
 
-  function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'nix'
-  endfunction
+    function l:formatter.AppliesToBuffer() abort
+        return &filetype is# 'nix'
+    endfunction
 
-  ""
-  " Reformat the current buffer with nixpkgs-fmt or the binary named in
-  " @flag(nixpkgs_fmt_executable)
-  " @throws ShellError
-  function l:formatter.Format() abort
-    let l:cmd = [ s:plugin.Flag('nixpkgs_fmt_executable') ]
+    ""
+    " Reformat the current buffer with nixpkgs-fmt or the binary named in
+    " @flag(nixpkgs_fmt_executable)
+    " @throws ShellError
+    function l:formatter.Format() abort
+        let l:cmd = [ s:plugin.Flag('nixpkgs_fmt_executable') ]
 
-    " nixpkgs-fmt does not support range formatting.
-    call codefmt#formatterhelpers#Format(l:cmd)
-  endfunction
+        " nixpkgs-fmt does not support range formatting.
+        call codefmt#formatterhelpers#Format(l:cmd)
+    endfunction
 
-  return l:formatter
+    return l:formatter
 endfunction
