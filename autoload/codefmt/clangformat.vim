@@ -129,6 +129,12 @@ function! codefmt#clangformat#GetFormatter() abort
     ""
     " Reformat buffer with clang-format, only targeting [ranges] if given.
     function l:formatter.FormatRanges(ranges) abort
+        " https://github.com/google/vim-codefmt/issues/188
+        " (27e5ac299a0714025cc46fc1da11694a8662b058)
+        if line('$') == 1 && getline(1) == ''
+            return
+        endif
+
         let l:Style_value = s:plugin.Flag('clang_format_style')
         if type(l:Style_value) is# type('')
             let l:style = l:Style_value
