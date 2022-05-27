@@ -41,7 +41,7 @@ function! codefmt#luaformatterfiveone#GetFormatter() abort
     function l:formatter.Format() abort
         let l:cmd = [ s:plugin.Flag('luaformatterfiveone_executable')]
         " Specify we are sending input through stdin
-        let l:cmd += ['-i']
+        let l:cmd += ['-i'] + s:plugin.Flag('luaformatterfiveone_options')
 
         try
             call codefmt#formatterhelpers#Format(l:cmd)

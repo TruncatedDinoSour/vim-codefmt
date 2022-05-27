@@ -208,12 +208,12 @@ call s:plugin.Flag('ocamlformat_executable', 'ocamlformat')
 ""
 " The path to the hindent executable.
 call s:plugin.Flag('hindent_executable', 'hindent')
-call s:plugin.Flag('hindent_indent_size', '2')
+call s:plugin.Flag('hindent_indent_size', '4')
 call s:plugin.Flag('hindent_line_length', '80')
 
 " The path to the brittany executable.
 call s:plugin.Flag('brittany_executable', 'brittany')
-call s:plugin.Flag('brittany_indent', '2')
+call s:plugin.Flag('brittany_indent', '4')
 call s:plugin.Flag('brittany_columns', '80')
 
 ""
@@ -223,6 +223,7 @@ call s:plugin.Flag('nixpkgs_fmt_executable', 'nixpkgs-fmt')
 ""
 " The path to the luaformatterfiveone executable.
 call s:plugin.Flag('luaformatterfiveone_executable', 'luaformatterfiveone')
+call s:plugin.Flag('luaformatterfiveone_options', ['-s', '4'])
 
 ""
 " The path to the cljstyle executable.
