@@ -17,7 +17,7 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 
 " See https://prettier.io for a list of supported file types.
 let s:supported_filetypes = ['javascript', 'markdown', 'html', 'css', 'yaml',
-            \ 'jsx', 'less', 'scss', 'mdx', 'vue']
+            \ 'jsx', 'less', 'scss', 'mdx', 'vue', 'typescript', 'less', 'json', 'graphql']
 
 
 ""
@@ -72,7 +72,7 @@ function! codefmt#prettier#GetFormatter() abort
         if @% == ""
             call extend(l:cmd, ['--parser', 'babel'])
         else
-            call extend(l:cmd, ['--stdin-filepath', expand('%:p')])
+            call extend(l:cmd, ['--stdin-filepath', expand('%:p'), '--parser', &filetype])
         endif
 
         call maktaba#ensure#IsNumber(a:startline)
