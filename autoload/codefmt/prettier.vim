@@ -72,7 +72,7 @@ function! codefmt#prettier#GetFormatter() abort
         if @% == ""
             call extend(l:cmd, ['--parser', 'babel'])
         else
-            call extend(l:cmd, ['--stdin-filepath', expand('%:p'), '--parser', &filetype])
+            call extend(l:cmd, ['--stdin-filepath', expand('%:p')])
         endif
 
         call maktaba#ensure#IsNumber(a:startline)
