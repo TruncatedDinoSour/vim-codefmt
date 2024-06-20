@@ -1,3 +1,4 @@
+# This repository has been migrated to the self-hosted ari-web Forgejo instance: <https://git.ari.lt/ari/vim-codefmt>
 codefmt is a utility for syntax-aware code formatting. It contains several
 built-in formatters, and allows new formatters to be registered by other
 plugins.
